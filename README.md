@@ -3,8 +3,11 @@
 
 
 使用pip install -r requirements.txt来安装模块
+
 所需的模块为ruamel.yaml     ping3
+
 使用python mcping.py启动
+
 或者下载releases里面的exe文件，可以直接运行（大概）
 
 
