@@ -7,6 +7,9 @@
 使用python mcping.py启动
 
 
+ip.yaml和output.yaml不会自动创建，请下载或手动创建
+
+
 服务器地址保存在ip.yaml文件里面
 
 
