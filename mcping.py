@@ -3,32 +3,63 @@
 
 from ruamel import yaml
 from ping3 import ping
+import os
+import requests
+
+
+
+#检测相关文件是否存在
+def Flag(file):
+    fileFlag = os.path.isfile(file)
+    return fileFlag
+if Flag("./ip.yaml"):
+    file = open('ip.yaml', 'r', encoding='utf-8')
+    ip = yaml.safe_load(file)
+else:
+    userInput = input("是否自动下载ip文件\nyes or no\n")
+    if userInput == "yes":
+        print("正在尝试下载，若下载失败请尝试手动下载")
+        print("下载地址:https://raw.githubusercontent.com/XYSummerT/mcping/main/ip.yaml")
+        ipFile = requests.get("https://raw.githubusercontent.com/XYSummerT/mcping/main/ip.yaml",allow_redirects=True)
+        open("./ip.yaml","wb").write(ipFile.content)
+        file = open('ip.yaml', 'r', encoding='utf-8')
+        ip = yaml.safe_load(file)
+    else:
+        print("请手动下载")
+        print("下载地址:https://raw.githubusercontent.com/XYSummerT/mcping/main/ip.yaml")
+        exit()
+if Flag("./output.yaml"):
+    def write_yaml(pdic):
+        with open('output.yaml', 'w', encoding='utf-8') as f:
+            yaml.dump(pdic, f, Dumper=yaml.RoundTripDumper)
+else:
+    open("./output.yaml","x")
+    def write_yaml(pdic):
+        with open('output.yaml', 'w', encoding='utf-8') as f:
+            yaml.dump(pdic, f, Dumper=yaml.RoundTripDumper)
+
 
 
 
 #ping服务器
 def ping_server(ip):
-    utime,ttag = 0.0,0
+    uTime,tTag = 0.0,0
     for t in range(2):
-        ftime = ping(ip,timeout=1)
-        if ftime != None :
-            utime += ftime
+        fTime = ping(ip,timeout=1)
+        if fTime != None :
+            uTime += fTime
         else:
-            ttag = 1
-    utime = utime/4
-    return utime,ttag
-
-
-#读取yaml文件
-file = open('ip.yaml', 'r', encoding='utf-8')
-ip = yaml.safe_load(file)
+            tTag = 1
+    uTime = uTime/4
+    return uTime,tTag
 
 
 
-#写入yaml文件
-def write_yaml(pdic):
-    with open('output.yaml','w',encoding='utf-8') as f:
-        yaml.dump(pdic, f, Dumper=yaml.RoundTripDumper)
+
+
+
+
+
 
 
 
