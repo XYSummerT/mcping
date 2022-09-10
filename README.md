@@ -6,25 +6,19 @@
 
 所需的模块为ruamel.yaml     ping3
 
-使用python mcping.py启动
+使用python main.py启动
 
 或者下载releases里面的exe文件，可以直接运行（大概）
 
-
-ip.yaml和output.yaml不会自动创建，请下载或手动创建
 
 
 服务器地址保存在ip.yaml文件里面
 
 
-
-使用help命令来查看帮助
-使用ping命令来测试到服务器的延迟
-使用print命令令来打印结果
-使用exit命令来退出程序
+如果无法使用GUI请下载旧版本
 
 
 最终的结果会保存在output.yaml文件里面
 
 
-图形化界面和自动写入在水了(
+自动写入在水了(
